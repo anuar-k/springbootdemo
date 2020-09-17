@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+    <link th:href="@{/style/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div th:switch="${users}">
+        <h2 th:case="null">No users found!</h2>
+        <div th:case="*">
+            <h2>Users</h2>
+            <table class="table text-center">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td scope="row" th:text="${user.id}"></td>
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td><a class="btn" th:href="@{user-update/{id}(id=${user.id})}">
+                        <img class="icon" src="/img/icon_edit.png" aria-placeholder="edit"/>
+                    </a></td>
+                    <td><a class="btn" th:href="@{user-delete/{id}(id=${user.id})}">
+                        <img class="icon" src="/img/icon_delete.png" aria-placeholder="delete"/>
+                    </a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><a class="btn btn-dark" href="/user-create">Create user</a></p>
+    </div>
+</div>
+</body>
+</html>

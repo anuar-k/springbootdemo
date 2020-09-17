@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+}
+
+.icon {
+    width: 20px;
+}
+
+.inner__create {
+    align-items: center;
+    margin: 0 auto;
+}
+
+.form-control-sm {
+    margin: 0 auto;
+    margin-left: 30%;
+}
+
+.form__body {
+    margin: 0;
+    padding: 0;
+    margin: 60px auto;
+}
